@@ -142,6 +142,9 @@
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
       --tw-ease: initial;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
     }
   }
 }
@@ -519,6 +522,10 @@
     }
   }
 
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -555,6 +562,18 @@
     display: table;
   }
 
+  .table-caption {
+    display: table-caption;
+  }
+
+  .table-cell {
+    display: table-cell;
+  }
+
+  .table-row {
+    display: table-row;
+  }
+
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
@@ -569,6 +588,10 @@
 
   .flex-shrink {
     flex-shrink: 1;
+  }
+
+  .caption-bottom {
+    caption-side: bottom;
   }
 
   .border-collapse {
@@ -635,6 +658,10 @@
     gap: 32px;
   }
 
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+
   .rounded {
     border-radius: .25rem;
   }
@@ -646,6 +673,16 @@
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
   }
 
   .border-solid {
@@ -689,12 +726,34 @@
     background-color: var(--foreground);
   }
 
+  .bg-muted {
+    background-color: var(--muted);
+  }
+
+  .bg-muted\/50 {
+    background-color: var(--muted);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-muted\/50 {
+      background-color: color-mix(in oklab, var(--muted) 50%, transparent);
+    }
+  }
+
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
 
   .px-1 {
     padding-inline: calc(var(--spacing) * 1);
+  }
+
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
   }
 
   .px-4 {
@@ -715,6 +774,14 @@
 
   .text-center {
     text-align: center;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .align-middle {
+    vertical-align: middle;
   }
 
   .font-\[family-name\:var\(--font-geist-mono\)\] {
@@ -750,8 +817,20 @@
     letter-spacing: -.01em;
   }
 
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+
   .text-background {
     color: var(--background);
+  }
+
+  .text-foreground {
+    color: var(--foreground);
+  }
+
+  .text-muted-foreground {
+    color: var(--muted-foreground);
   }
 
   .lowercase {
@@ -847,6 +926,18 @@
   }
 
   @media (hover: hover) {
+    .hover\:bg-muted\/50:hover {
+      background-color: var(--muted);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-muted\/50:hover {
+        background-color: color-mix(in oklab, var(--muted) 50%, transparent);
+      }
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:underline:hover {
       text-decoration-line: underline;
     }
@@ -856,6 +947,10 @@
     .hover\:underline-offset-4:hover {
       text-underline-offset: 4px;
     }
+  }
+
+  .data-\[state\=selected\]\:bg-muted[data-state="selected"] {
+    background-color: var(--muted);
   }
 
   @media (width >= 40rem) {
@@ -948,6 +1043,30 @@
     .dark\:hover\:bg-\[\#ccc\]:is(.dark *):hover {
       background-color: #ccc;
     }
+  }
+
+  .\[\&_tr\]\:border-b tr {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+
+  .\[\&_tr\:last-child\]\:border-0 tr:last-child {
+    border-style: var(--tw-border-style);
+    border-width: 0;
+  }
+
+  .\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0:has([role="checkbox"]) {
+    padding-right: calc(var(--spacing) * 0);
+  }
+
+  .\[\&\>\[role\=checkbox\]\]\:translate-y-\[2px\] > [role="checkbox"] {
+    --tw-translate-y: 2px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .\[\&\>tr\]\:last\:border-b-0 > tr:last-child {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 0;
   }
 }
 
@@ -1260,6 +1379,24 @@
 @property --tw-ease {
   syntax: "*";
   inherits: false
+}
+
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
 }
 
 
